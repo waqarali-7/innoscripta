@@ -1,0 +1,6 @@
+backend-news/.idea
+backend-news/vendor
+backend-news/.env
+
+news-frontend/node_modules
+news-frontend/.next

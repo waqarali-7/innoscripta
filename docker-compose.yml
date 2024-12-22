@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: ./backend-news
+      dockerfile: Dockerfile
+    image: laravel-app
+    container_name: laravel-app
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend-news:/var/www/html
+    environment:
+      APP_ENV: local
+      APP_DEBUG: true
+      APP_KEY: base64:wUxANfAqOx8DYm6i8dysaamTWJ4xPEbg/t23qrUXXpo=
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: root
+      DB_PASSWORD: password
+    # depends_on:
+    #   - db
+    # command: >
+    #   bash -c "
+    #     php artisan migrate --force &&
+    #     php artisan db:seed --class=AdminSeeder &&
+    #     apache2-foreground
+    #   "
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  frontend:
+    build:
+      context: ./news-frontend
+      dockerfile: Dockerfile
+    container_name: frontend-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./news-frontend:/usr/src/app
+    environment:
+      API_URL: http://localhost:8000/api
+
+volumes:
+  db_data:

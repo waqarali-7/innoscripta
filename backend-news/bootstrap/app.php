@@ -25,7 +25,6 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\JsonResponseMiddleware::class,
-            \App\Http\Middleware\CorsMiddleware::class,
             \Illuminate\Http\Middleware\HandleCors::class,
         ]);
     })

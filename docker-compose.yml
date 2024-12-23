@@ -19,15 +19,8 @@ services:
       DB_DATABASE: laravel
       DB_USERNAME: root
       DB_PASSWORD: password
-    # depends_on:
-    #   - db
-    # command: >
-    #   bash -c "
-    #     php artisan migrate --force &&
-    #     php artisan db:seed --class=AdminSeeder &&
-    #     apache2-foreground
-    #   "
-
+    depends_on:
+      - db
   db:
     image: mysql:8.0
     container_name: mysql-db

@@ -19,6 +19,9 @@ services:
       DB_DATABASE: laravel
       DB_USERNAME: root
       DB_PASSWORD: password
+      NEWSAPI_KEY:
+      GUARDIAN_API_KEY:
+      NYTIMES_API_KEY:
     depends_on:
       - db
   db:

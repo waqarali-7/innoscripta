@@ -1,22 +1,7 @@
-// import api from "./axiosInstance";
-
-// export const loginUser = async (email: string, password: string) => {
-//   const response = await api.post("/login", { email, password });
-//   return response.data;
-// };
-
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  withCredentials: true, // Include credentials if needed
-});
+import api from "./axiosInstance";
 
 export const loginUser = async (email: string, password: string) => {
-  const response = await api.post('/login', { email, password });
+  const response = await api.post("/login", { email, password });
   return response.data;
 };
 

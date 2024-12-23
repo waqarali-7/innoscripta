@@ -17,12 +17,8 @@ const Login = () => {
     try {
       const data = await loginUser(email, password);
       login(data.data.token);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message || "An unexpected error occurred");
-      } else {
-        setError("An unknown error occurred");
-      }
+    } catch (err: any) {
+        setError(err?.response?.data?.message || "An unexpected error occurred");
     }
   };
 
